@@ -4,7 +4,8 @@
   "scripts": {
     "start": "node ./src/index.js",
     "dev": "nodemon ./src/index.js",
-    "lint:fix": "eslint --fix ./*.js"
+    "lint": "eslint \"src/**/*.{js,jsx}\"",
+    "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix"
   },
   "repository": {
     "type": "git",
