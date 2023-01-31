@@ -1,6 +1,5 @@
 const express = require("express");
 const { Bot, webhookCallback } = require("grammy");
-const axios = require("axios");
 require('dotenv').config();
 
 const bot = new Bot(process.env.BOT_CLIENT_API_KEY);
