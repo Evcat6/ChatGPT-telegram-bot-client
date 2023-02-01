@@ -1,6 +1,6 @@
-const { clearStorage } = require('./services/session.service')
-const { createRequest } = require('./services/request.service')
-const { authorTgLink } = require('./data/constants/chat')
+const { clearStorage } = require('../services/session.service')
+const { createRequest } = require('../services/request.service')
+const { authorTgLink } = require('../data/constants/chat')
 
 const greeting = async (ctx) => {
   ctx.reply(`Hello! I'm ChatGPT telegram bot client created by <a href='${authorTgLink}' >Evgen Kotlyarchuck</a>!`, { parse_mode: 'HTML' })
