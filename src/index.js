@@ -1,14 +1,13 @@
 const express = require('express')
 const { bot, webhookCallback } = require('./services/bot.service')
-const { authorTgLink } = require('./data/constants/chat')
-
-const greeting = async (ctx) => {
-  ctx.reply(`Hello! I'm ChatGPT telegram bot client created by <a href='${authorTgLink}' >Evgen Kotlyarchuck</a>!`, { parse_mode: 'HTML' })
-}
-
-// bot.stopPolling()
+const { authMiddleware } = require('./middlewares/auth.middleware')
+const { greeting, stop, serverRequest } = require('./controllers/bot.controller')
 
 bot.command('start', greeting)
+
+bot.command('stop', stop)
+
+bot.on('message', authMiddleware, serverRequest)
 
 // Start the server
 if (process.env.NODE_ENV === 'production') {
