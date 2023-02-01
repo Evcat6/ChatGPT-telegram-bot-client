@@ -10,6 +10,10 @@ function updateStorage (ctx, key, value) {
   return ctx.session[key]
 }
 
+function getItemFromStorage (ctx, key) {
+  return ctx.session[key]
+}
+
 function clearStorage (ctx) {
   ctx.session = createInitialSessionData()
 }
@@ -17,5 +21,6 @@ function clearStorage (ctx) {
 module.exports = {
   createInitialSessionData,
   updateStorage,
-  clearStorage
+  clearStorage,
+  getItemFromStorage
 }
