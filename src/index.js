@@ -1,11 +1,13 @@
 const express = require('express')
 const { bot, webhookCallback } = require('./services/bot.service')
 const { authMiddleware } = require('./middlewares/auth.middleware')
-const { greeting, stop, serverRequest } = require('./controllers/bot.controller')
+const { greeting, stop, serverRequest, checkAuth } = require('./controllers/bot.controller')
 
 bot.command('start', greeting)
 
 bot.command('stop', stop)
+
+bot.command('check_auth', checkAuth)
 
 bot.on('message', authMiddleware, serverRequest)
 
