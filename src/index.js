@@ -2,14 +2,15 @@ const express = require('express')
 const { bot, webhookCallback } = require('./services/bot.service')
 const { authMiddleware } = require('./middlewares/auth.middleware')
 const { greeting, stop, serverRequest, checkAuth } = require('./controllers/bot.controller')
+const { commands } = require('./data/constants/commands')
 
-bot.command('start', greeting)
+bot.command(commands.start, greeting)
 
-bot.command('stop', stop)
+bot.command(commands.stop, stop)
 
-bot.command('check_auth', checkAuth)
+bot.command(commands.check_auth, checkAuth)
 
-bot.on('message', authMiddleware, serverRequest)
+bot.on(commands.message, authMiddleware, serverRequest)
 
 // Start the server
 if (process.env.NODE_ENV === 'production') {
