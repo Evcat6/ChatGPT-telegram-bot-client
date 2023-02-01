@@ -1,4 +1,4 @@
-const { clearStorage } = require('../services/session.service')
+const { clearStorage, getItemFromStorage } = require('../services/session.service')
 const { createRequest } = require('../services/request.service')
 const { authorTgLink } = require('../data/constants/chat')
 
@@ -16,8 +16,18 @@ const serverRequest = async (ctx) => {
   ctx.reply(resultQuery)
 }
 
+const checkAuth = async (ctx) => {
+  const auth = getItemFromStorage('authorized')
+  if (auth) {
+    ctx.reply('You are authorized)')
+  } else {
+    ctx.reply('You are not authorized)')
+  }
+}
+
 module.exports = {
   greeting,
   stop,
-  serverRequest
+  serverRequest,
+  checkAuth
 }
