@@ -17,9 +17,7 @@ const serverRequest = async (ctx) => {
 }
 
 const checkAuth = async (ctx) => {
-  console.log('dghet')
   const auth = getItemFromStorage(ctx, 'authorized')
-  console.log(auth)
   if (auth) {
     ctx.reply('You are authorized)')
   } else {
