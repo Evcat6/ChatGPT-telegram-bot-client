@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "node ./src/index.js",
+    "build": "tsc",
     "dev": "nodemon ./src/index.js",
     "lint": "eslint \"src/**/*.{js,jsx}\"",
     "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix"
@@ -26,5 +27,6 @@
     "openai": "^3.1.0"
   },
   "devDependencies": {
+    "@types/node": "^18.11.18"
   }
 }
