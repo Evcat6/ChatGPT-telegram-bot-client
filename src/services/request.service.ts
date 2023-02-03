@@ -1,5 +1,7 @@
-const { Configuration, OpenAIApi } = require('openai')
-require('dotenv').config()
+import { Configuration, OpenAIApi } from 'openai'
+import * as dotenv from 'dotenv'
+
+dotenv.config()
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY
@@ -7,7 +9,7 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration)
 
-const createRequest = async (prompt) => {
+const createRequest = async (prompt: string): Promise<string | undefined> => {
   const response = await openai.createCompletion({
     model: 'text-davinci-003',
     prompt,
@@ -21,4 +23,4 @@ const createRequest = async (prompt) => {
   return response.data.choices[0].text
 }
 
-module.exports = { createRequest }
+export { createRequest }

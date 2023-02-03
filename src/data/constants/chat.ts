@@ -1,5 +1,3 @@
 const authorTgLink = 'https://t.me/Evcat'
 
-module.exports = {
-  authorTgLink
-}
+export { authorTgLink }
