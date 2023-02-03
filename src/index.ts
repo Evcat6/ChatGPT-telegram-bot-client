@@ -1,5 +1,8 @@
-const express = require('express')
-const { bot, webhookCallback } = require('./services/bot.service')
+import { bot, webhookCallback } from './services/bot.service'
+import * as express from 'express'
+import * as dotenv from 'dotenv'
+
+dotenv.config()
 
 // Start the server
 if (process.env.NODE_ENV === 'production') {
@@ -8,11 +11,11 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.json())
   app.use(webhookCallback(bot, 'express'))
 
-  const PORT = process.env.PORT || 3000
+  const PORT = process.env.PORT ?? 3000
   app.listen(PORT, () => {
     console.log(`Bot listening on port ${PORT}`)
   })
 } else {
   // Use Long Polling for development
-  bot.start()
+  void bot.start()
 }
